@@ -7,7 +7,7 @@ A framework to register [Advanced Custom Fields](https://wordpress.org/plugins/a
 
 ACF PHP makes it easier to register ACF fields using PHP by automating the tedious parts of adding new fields and adding defaults that make sense.
 
-*Without ACF PHP:*
+**Without ACF PHP:**
 
 ```php
 array (
@@ -30,7 +30,7 @@ array (
 )
 ```
 
-*With ACF PHP:*
+**With ACF PHP:**
 
 ```php
 'header_title',
@@ -55,7 +55,9 @@ Download the `.zip` file from GitHub to install in your WordPress admin.
 
 All options for ACF fields are supported. For more information, please check out the official [Advanced Custom Fields website](https://www.advancedcustomfields.com/resources/register-fields-via-php/).
 
-*Basic example:*
+**Basic example:**
+
+*Setting up the metabox:*
 
 ```php
 $page_settings_metabox = array(
@@ -81,17 +83,26 @@ $page_settings_metabox = array(
 		),
 	),
 );
+```
 
+*Register the metabox:*
+
+```php
 if ( function_exists( 'acf_php_add_local_field_group' ) ) {
 	acf_php_add_local_field_group( $page_settings_metabox );
 }
+```
 
-// To retrieve the meta values (alternatively, use standard ACF functions)
+*Retrieve the meta values:*
+
+```php
 $text_content = get_post_meta( get_the_ID(), 'text', true );
 $textarea_content = get_post_meta( get_the_ID(), 'textarea', true );
 ```
 
-*Repeater example:*
+Alternatively, use standard ACF functions.
+
+**Repeater example:**
 
 ```php
 'fields' => array(
@@ -112,7 +123,7 @@ $textarea_content = get_post_meta( get_the_ID(), 'textarea', true );
 ),
 ```
 
-*Flexible Content example:*
+**Flexible Content example:**
 
 ```php
 'fields' => array(
@@ -133,7 +144,7 @@ $textarea_content = get_post_meta( get_the_ID(), 'textarea', true );
 ),
 ```
 
-*Reusable field example:*
+**Reusable field example:**
 
 ```php
 $checkbox = array(
@@ -151,6 +162,7 @@ $checkbox = array(
 ```
 
 ## To-do
+* Improve ACF_PHP_Metabox class (leaner code).
 * Add support for multiple fields in a single variable.
 * Improve field group location settings.
 
