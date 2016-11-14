@@ -8,8 +8,8 @@ class Admin {
     public function __construct() {
         add_action( 'acf/init', array( $this, 'register_options_page' ) );
         add_action( 'acf/init', array( $this, 'register_options' ) );
-        add_action( 'init', array( $this, 'hide_acf_menu' ) );
-        add_action( 'init', array( $this, 'redirect_acf_menu' ) );
+        add_action( 'acf/init', array( $this, 'hide_acf_menu' ) );
+        add_action( 'acf/init', array( $this, 'redirect_acf_menu' ) );
     }
 
     public function register_options_page() {
