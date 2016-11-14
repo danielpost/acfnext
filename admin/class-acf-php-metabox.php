@@ -148,20 +148,20 @@ class ACF_PHP_Metabox {
 			}
 
 			if ( isset( $field['layouts'] ) && is_array( $field['layouts'] ) ) {
-			 	$layouts = $field['layouts'];
+				$layouts = $field['layouts'];
 
-			 	foreach ( $layouts as $layout_id => &$layout ) {
-			 		if ( isset( $layouts[ $layout_id ]['sub_fields'] ) && is_array( $layouts[ $layout_id ]['sub_fields'] ) ) {
-			 			$layout_sub_fields = $layouts[ $layout_id ]['sub_fields'];
+				foreach ( $layouts as $layout_id => &$layout ) {
+					if ( isset( $layouts[ $layout_id ]['sub_fields'] ) && is_array( $layouts[ $layout_id ]['sub_fields'] ) ) {
+						$layout_sub_fields = $layouts[ $layout_id ]['sub_fields'];
 
-			 			foreach ( $layout_sub_fields as $layout_sub_field_id => &$layout_sub_field ) {
-			 				$layout_sub_field = $this->convert_field( $layout_sub_field_id, $layout_sub_field, $field_id, $layout_id );
-			 			}
+						foreach ( $layout_sub_fields as $layout_sub_field_id => &$layout_sub_field ) {
+							$layout_sub_field = $this->convert_field( $layout_sub_field_id, $layout_sub_field, $field_id, $layout_id );
+						}
 
-			 			$layouts[ $layout_id ]['sub_fields'] = $layout_sub_fields;
-			 		}
+						$layouts[ $layout_id ]['sub_fields'] = $layout_sub_fields;
+					}
 
-			 		$layout = $this->convert_field( $layout_id, $layout, $field_id, null, true );
+					$layout = $this->convert_field( $layout_id, $layout, $field_id, null, true );
 				}
 
 				$field['layouts'] = $layouts;
