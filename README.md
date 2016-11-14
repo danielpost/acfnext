@@ -85,6 +85,10 @@ $page_settings_metabox = array(
 if ( function_exists( 'acf_php_add_local_field_group' ) ) {
 	acf_php_add_local_field_group( $page_settings_metabox );
 }
+
+// To retrieve the meta values (alternatively, use standard ACF functions)
+$text_content = get_post_meta( get_the_ID(), 'text', true );
+$textarea_content = get_post_meta( get_the_ID(), 'textarea', true );
 ```
 
 *Repeater example:*
