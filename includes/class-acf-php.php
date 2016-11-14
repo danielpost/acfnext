@@ -8,15 +8,25 @@ class ACF_PHP {
 
 	public function __construct() {
 
-		$this->ACF_PHP = 'acf-php';
-		$this->version = '1.0.0';
+		add_action( 'plugins_loaded', array( $this, 'initialize' ) );
 
-		$this->load_dependencies();
+	}
 
-		if ( is_admin() ) {
-			new ACF_PHP_Admin( $this->ACF_PHP, $this->version );
+	public function initialize() {
+
+		if ( class_exists('acf') ) {
+			
+			$this->ACF_PHP = 'acf-php';
+			$this->version = '1.0.0';
+
+			$this->load_dependencies();
+
+			if ( is_admin() ) {
+				new ACF_PHP_Admin( $this->ACF_PHP, $this->version );
+			}
+
 		}
-
+		
 	}
 
 	private function load_dependencies() {
