@@ -1,7 +1,6 @@
 <?php
-namespace DP\ACFPHP\WordPress;
 
-class Metabox {
+class ACF_PHP_Metabox {
 
 	/**
 	 * @var array

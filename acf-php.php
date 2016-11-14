@@ -1,29 +1,26 @@
 <?php
 /**
- * Plugin Name: ACF PHP
- * Plugin URI: http://www.danielpost.com
- * Description: Supercharge your ACF development.
- * Author: Daniel Post
- * Version: 1.0
- * Author URI: http://www.danielpost.com
+ * Plugin Name:       ACF PHP
+ * Plugin URI:        http://danielpost.com/
+ * Description:       Supercharge your ACF development.
+ * Version:           1.0.0
+ * Author:            Daniel Post
+ * Author URI:        http://danielpost.com/
+ * License:           GPL-3.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
+ * Text Domain:       acf-php
  */
-namespace DP;
 
-if ( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
-use DP\ACFPHP\WordPress\Plugin;
-
-spl_autoload_register(__NAMESPACE__ . '\\autoload');
-
-new Plugin();
-
-function autoload( $class ) {
-    if( ! strstr( $class, 'DP\ACFPHP' ) ) {
-        return;
-    }
-
-    $result = str_replace( 'DP\ACFPHP\\', '', $class );
-    $result = str_replace( '\\', '/', $result );
-
-    require $result . '.php';
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
+
+require plugin_dir_path( __FILE__ ) . 'includes/class-acf-php.php';
+
+function run_acf_php() {
+
+	$plugin = new ACF_PHP();
+
+}
+run_acf_php();
