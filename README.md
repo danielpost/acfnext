@@ -51,6 +51,10 @@ array (
 
 ## Usage
 
+Download the `.zip` file from GitHub to install in your WordPress admin.
+
+All options for ACF fields are supported. For more information, please check out the official [Advanced Custom Fields website](https://www.advancedcustomfields.com/resources/register-fields-via-php/).
+
 *Basic example:*
 
 ```php
@@ -78,7 +82,7 @@ $page_settings_metabox = array(
 	),
 );
 
-if ( function_exists( acf_php_add_local_field_group ) ) {
+if ( function_exists( 'acf_php_add_local_field_group' ) ) {
 	acf_php_add_local_field_group( $page_settings_metabox );
 }
 ```
