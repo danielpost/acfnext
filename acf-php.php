@@ -6,8 +6,8 @@
  * Version:           1.0.0
  * Author:            Daniel Post
  * Author URI:        http://danielpost.com/
- * License:           GPL-3.0+
- * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       acf-php
  */
 
