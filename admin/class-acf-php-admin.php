@@ -32,15 +32,7 @@ class ACF_PHP_Admin {
 		$acfphp_options = array(
 			'key' => 'acfphp_options',
 			'title' => __('Options', $this->ACF_PHP),
-			'location' => array(
-				array(
-					array(
-						'param' => 'options_page',
-						'operator' => '==',
-						'value' => 'acf-options-acf-php',
-					),
-				),
-			),
+			'location' => 'options_page == acf-options-acf-php',
 			'fields' => array(
 				'dp_hide_acf_menu_item' => array(
 					'type' => 'true_false',

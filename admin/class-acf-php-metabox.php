@@ -38,6 +38,20 @@ class ACF_PHP_Metabox {
 	}
 
 	/**
+	 * @param $location
+	 */
+	public function set_location( $location ) {
+		$this->options['location'] = $location;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function get_location() {
+		return $this->options['location'];
+	}
+
+	/**
 	 * @param $fields
 	 */
 	public function set_fields( $fields ) {
@@ -77,6 +91,29 @@ class ACF_PHP_Metabox {
 	}
 
 	/**
+	 * Set location
+	 */
+	protected function convert_location() {
+		$location = $this->get_location();
+
+		if ( is_string( $location ) ) {
+			$location = explode( ' ', $location );
+
+			$location = array(
+				array(
+					array(
+						'param' => $location[0],
+						'operator' => $location[1],
+						'value' => $location[2],
+					),
+				),
+			);
+		}
+
+		$this->set_location( $location );
+	}
+
+	/**
 	 * Convert field (add key, name and optional settings to fields)
 	 */
 	protected function convert_field( $field_id, $field, $parent_id = null, $layout_id = null, $is_layout = false ) {
@@ -108,7 +145,7 @@ class ACF_PHP_Metabox {
 		}
 
 		// Set defaults
-		if( $is_layout ) {
+		if ( $is_layout ) {
 			$field = array_merge( array(
 				'display' => 'row',
 			), $field );
@@ -130,6 +167,7 @@ class ACF_PHP_Metabox {
 	 */
 	public function prepare_fields() {
 		$this->set_default_options();
+		$this->convert_location();
 
 		$options = $this->get_options();
 		$fields = $this->get_fields();
