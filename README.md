@@ -30,6 +30,18 @@ array (
 )
 ```
 
+```php
+'location' => array(
+	array(
+		array(
+			'param' => 'post_type',
+			'operator' => '==',
+			'value' => 'page',
+		),
+	),
+),
+```
+
 **With ACF PHP:**
 
 ```php
@@ -39,6 +51,10 @@ array (
 	'label' => 'Header Background Image',
 	'type' => 'image',
 )
+```
+
+```php
+'location' => 'post_type == page',
 ```
 
 ## Features
