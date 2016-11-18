@@ -125,19 +125,21 @@ class ACF_PHP_Metabox {
 			$field = array();
 		}
 
+		// Generate a unique key for each field
 		// Check if the field is a sub field (repeater or flexible content field)
 		if ( isset( $parent_id ) && $parent_id ) {
-			$field['name'] = $field_id;
 			// Check if the field is a sub field of a flexible content layout
 			if ( isset( $layout_id ) && $layout_id ) {
-				$field['key']  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $layout_id . '_' . $field_id;
+				$key  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $layout_id . '_' . $field_id;
 			} else {
-				$field['key']  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $field_id;
+				$key  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $field_id;
 			}
 		} else {
-			$field['name'] = $field_id;
-			$field['key']  = 'field_' . $options['key'] . '_' . $field_id;
+			$key  = 'field_' . $options['key'] . '_' . $field_id;
 		}
+
+		$field['key'] = $key;
+		$field['name'] = $field_id;
 
 		// If it's a tab with no placement setting, set default placement
 		if ( $field['type'] === 'tab' && ! isset( $field['placement'] ) ) {
