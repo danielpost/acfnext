@@ -29,7 +29,7 @@ class ACF_PHP_Admin {
 	}
 
 	public function register_options() {
-		$acfphp_options = array(
+		$acf_php_options = array(
 			'key' => 'acfphp_options',
 			'title' => __('Options', $this->ACF_PHP),
 			'location' => 'options_page == acf-options-acf-php',
@@ -47,7 +47,7 @@ class ACF_PHP_Admin {
 			),
 		);
 
-		new ACF_PHP_Metabox( $acfphp_options );
+		new ACF_PHP_Metabox( $acf_php_options );
 	}
 
 	public function hide_acf_menu() {
@@ -71,7 +71,7 @@ class ACF_PHP_Admin {
 
 }
 
-if ( ! function_exists( acf_php_add_local_field_group ) ) {
+if ( ! function_exists( 'acf_php_add_local_field_group' ) ) {
 	
 	function acf_php_add_local_field_group( $field_group ) {
 	
