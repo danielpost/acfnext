@@ -126,16 +126,12 @@ class ACF_PHP_Metabox {
 		}
 
 		// Generate a unique key for each field
-		// Check if the field is a sub field (repeater or flexible content field)
-		if ( isset( $parent_id ) && $parent_id ) {
-			// Check if the field is a sub field of a flexible content layout
-			if ( isset( $layout_id ) && $layout_id ) {
-				$key  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $layout_id . '_' . $field_id;
-			} else {
-				$key  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $field_id;
-			}
-		} else {
-			$key  = 'field_' . $options['key'] . '_' . $field_id;
+		$key  = 'field_' . $options['key'] . '_' . $field_id;
+
+		if ( !empty( $parent_id ) && !empty( $layout_id ) ) {
+			$key  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $layout_id . '_' . $field_id;
+		} elseif ( !empty( $parent_id ) && empty( $layout_id ) ) {
+			$key  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $field_id;
 		}
 
 		$field['key'] = $key;
@@ -147,19 +143,17 @@ class ACF_PHP_Metabox {
 		}
 
 		// Set defaults
-		if ( $is_layout ) {
-			$field = array_merge( array(
-				'display' => 'row',
-			), $field );
-		} else {
-			$field = array_merge( array(
-				'type' => 'text',
-			), $field );
+		if ( $is_layout && ! isset( $field['display'] ) {
+			$field['display'] = 'row';
 		}
 
-		$field = array_merge( array(
-			'label' => ucwords( str_replace( '_', ' ', $field_id ) ),
-		), $field );
+		if ( ! $is_layout && ! isset( $field['type'] ){
+			$field['type'] = 'text';
+		}
+
+		if ( ! isset( $field['label'] ) {
+			$field['label'] = ucwords( str_replace( '_', ' ', $field_id ) );
+		}
 
 		return $field;
 	}
