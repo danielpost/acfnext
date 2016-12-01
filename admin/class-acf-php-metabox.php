@@ -128,30 +128,29 @@ class ACF_PHP_Metabox {
 		// Generate a unique key for each field
 		$key  = 'field_' . $options['key'] . '_' . $field_id;
 
-		if ( !empty( $parent_id ) && !empty( $layout_id ) ) {
+		if ( ! empty( $parent_id ) && ! empty( $layout_id ) ) {
 			$key  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $layout_id . '_' . $field_id;
-		} elseif ( !empty( $parent_id ) && empty( $layout_id ) ) {
+		} elseif ( ! empty( $parent_id ) && empty( $layout_id ) ) {
 			$key  = 'field_' . $options['key'] . '_' . $parent_id . '_' . $field_id;
 		}
 
 		$field['key'] = $key;
 		$field['name'] = $field_id;
 
-		// If it's a tab with no placement setting, set default placement
+		// Set defaults
 		if ( $field['type'] === 'tab' && ! isset( $field['placement'] ) ) {
 			$field['placement'] = 'left';
 		}
 
-		// Set defaults
-		if ( $is_layout && ! isset( $field['display'] ) {
+		if ( $is_layout && ! isset( $field['display'] ) ) {
 			$field['display'] = 'row';
 		}
 
-		if ( ! $is_layout && ! isset( $field['type'] ){
+		if ( ! $is_layout && ! isset( $field['type'] ) ) {
 			$field['type'] = 'text';
 		}
 
-		if ( ! isset( $field['label'] ) {
+		if ( ! isset( $field['label'] ) ) {
 			$field['label'] = ucwords( str_replace( '_', ' ', $field_id ) );
 		}
 
